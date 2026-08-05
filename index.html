@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pri Lanches - Hambúrgueres Artesanais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="overlay" class="overlay" onclick="closeAllMenus()"></div>
+
+    <header>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="logo">
+            <img src="logo.png" alt="Pri Lanches Logo">
+        </div>
+
+        <div class="cart-icon-container" onclick="toggleCart()">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span id="cart-count" class="cart-count">0</span>
+        </div>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <ul>
+            <li><a href="#burgers" onclick="closeAllMenus()">Burgers</a></li>
+            <li><a href="#hot-dogs" onclick="closeAllMenus()">Hot Dogs</a></li>
+            <li><a href="#combos" onclick="closeAllMenus()">Combos</a></li>
+            <li><a href="#porcoes" onclick="closeAllMenus()">Porções</a></li>
+            <li><a href="#acai" onclick="closeAllMenus()">Açaí</a></li>
+            <li><a href="#tapiocas" onclick="closeAllMenus()">Tapiocas</a></li>
+            <li><a href="#bebidas" onclick="closeAllMenus()">Bebidas</a></li>
+        </ul>
+    </nav>
+
+    <aside id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Seu Pedido</h2>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div id="cart-items" class="cart-items">
+            </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">Finalizar no WhatsApp</button>
+        </div>
+    </aside>
+
+    <section class="carousel-container">
+        <div class="carousel-slide">
+            <div class="slide active">
+                <img src="banner1.jpg" alt="Banner 1">
+            </div>
+            <div class="slide">
+                <img src="banner2.jpg" alt="Banner 2">
+            </div>
+        </div>
+    </section>
+
+    <section id="burgers" class="products-section">
+        <h2 class="section-title">Burgers Artesanais</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Burguer" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Burguer</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto, queijo e molhos.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 24,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Burguer', 24.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="Bauru" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Bauru</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto, queijo, tomate, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 24,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Bauru', 24.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Salada" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Salada</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto, queijo, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 25,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Salada', 25.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Burguer Cheddar" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Burguer Cheddar</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto, queijo, cheddar, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 27,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Burguer Cheddar', 27.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Salada Cheddar" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Salada Cheddar</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto, queijo, cheddar, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 28,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Salada Cheddar', 28.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Bacon" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Bacon</h3>
+                        <p class="product-desc">Hambúrguer artesanal, bacon, presunto, queijo, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 29,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Bacon', 29.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Calabresa" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Calabresa</h3>
+                        <p class="product-desc">Hambúrguer artesanal, calabresa, presunto, queijo, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 29,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Calabresa', 29.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="Calabacon" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Calabacon</h3>
+                        <p class="product-desc">Hambúrguer artesanal, calabresa, bacon, presunto, queijo, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 35,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Calabacon', 35.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Egg" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Egg</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto, queijo, ovo, tomate, alface, batata palha e molho.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 30,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Egg', 30.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Tudo" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Tudo</h3>
+                        <p class="product-desc">Hambúrguer artesanal, calabresa, bacon, salsicha, ovo, presunto, queijo, catupiry, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 38,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Tudo', 38.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="Galinhão" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Galinhão</h3>
+                        <p class="product-desc">Hambúrguer artesanal, frango, calabresa, bacon, ovo, presunto, queijo, catupiry, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 38,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Galinhão', 38.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="X-Tudão" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">X-Tudão</h3>
+                        <p class="product-desc">Hambúrguer artesanal, frango, calabresa, bacon, salsicha, ovo, presunto, queijo, catupiry, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 42,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'X-Tudão', 42.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="Lanche da Casa" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Lanche da Casa</h3>
+                        <p class="product-desc">Hambúrguer artesanal, presunto em dobro, queijo em dobro, 2 salsichas, milho, batata palha, bacon, calabresa, ovo, vinagrete, alface, tomate e molhos.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 42,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Lanche da Casa', 42.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="burgers.jpg" alt="Duplo" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Duplo</h3>
+                        <p class="product-desc">2 Hambúrgueres artesanais, frango, calabresa, bacon, 2 salsichas, ovo, presunto, queijo, catupiry, tomate, alface, maionese e ketchup.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 45,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Duplo', 45.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="hot-dogs" class="products-section">
+        <h2 class="section-title">Hot Dogs</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Simples" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Simples</h3>
+                        <p class="product-desc">1 salsicha, batata palha, ketchup, maionese, mostarda e vinagrete.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 18,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Simples', 18.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Especial" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Especial</h3>
+                        <p class="product-desc">1 salsicha, batata palha, ketchup, maionese, mostarda, presunto e queijo.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 20,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Especial', 20.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Duplo" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Duplo</h3>
+                        <p class="product-desc">2 salsichas, batata palha, ketchup, maionese, mostarda e vinagrete.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 22,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Duplo', 22.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Cheddar" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Cheddar</h3>
+                        <p class="product-desc">1 salsicha, batata palha, ketchup, maionese, vinagrete, bacon e cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 27,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Cheddar', 27.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Catupiry" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Catupiry</h3>
+                        <p class="product-desc">1 salsicha, batata palha, ketchup, maionese, vinagrete, bacon e catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 27,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Catupiry', 27.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Cachorrão" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Cachorrão</h3>
+                        <p class="product-desc">2 salsichas, batata palha, ketchup, maionese, mostarda, presunto e queijo.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 30,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Cachorrão', 30.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hotdog.jpg" alt="Hot Dog Tudo" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Hot Dog Tudo</h3>
+                        <p class="product-desc">1 salsicha, batata palha, ketchup, mostarda, maionese, vinagrete, bacon, catupiry, frango desfiado, calabresa, cheddar, presunto e queijo.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 32,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Hot Dog Tudo', 32.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="combos" class="products-section">
+        <h2 class="section-title">Combos Promocionais</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Explodiu" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Explodiu</h3>
+                        <p class="product-desc">1 Lanche (X-Salada, X-Bacon, X-Burger, X-Calabresa ou X-Egg) + Batata 250g com Bacon, Cheddar e Catupiry + Açaí 180ml + Guaraná Antarctica 350ml.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 55,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Explodiu', 55.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal Hot Dog Simples" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal Hot Dog Simples</h3>
+                        <p class="product-desc">2 Hot Dogs simples + Fritas com bacon/cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 70,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal Hot Dog Simples', 70.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal X-Salada" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal X-Salada</h3>
+                        <p class="product-desc">2 X-Salada + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 75,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal X-Salada', 75.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal X-Burguer" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal X-Burguer</h3>
+                        <p class="product-desc">2 X-Burguer + Fritas com bacon/cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 75,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal X-Burguer', 75.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal Hot Dog Especial" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal Hot Dog Especial</h3>
+                        <p class="product-desc">2 Hot Dogs Especial + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 75,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal Hot Dog Especial', 75.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal X-Egg" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal X-Egg</h3>
+                        <p class="product-desc">2 X-Egg + Porção de Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 80,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal X-Egg', 80.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal X-Bacon" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal X-Bacon</h3>
+                        <p class="product-desc">2 X-Bacon + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 80,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal X-Bacon', 80.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal Calabresa" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal Calabresa</h3>
+                        <p class="product-desc">2 Lanches de calabresa + Fritas com bacon/cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 80,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal Calabresa', 80.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Hot Dog Simples (Família)" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Hot Dog Simples (4 Un.)</h3>
+                        <p class="product-desc">4 Hot Dogs Simples + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 85,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Hot Dog Simples (4 Un.)', 85.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Misto" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Misto</h3>
+                        <p class="product-desc">4 Misto Quente + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 85,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Misto', 85.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Bauru" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Bauru</h3>
+                        <p class="product-desc">4 Bauru + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 90,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Bauru', 90.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo X-Salada Cheddar" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo X-Salada Cheddar</h3>
+                        <p class="product-desc">4 X-Salada Cheddar + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 115,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo X-Salada Cheddar', 115.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Casal X-Tudo" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Casal X-Tudo</h3>
+                        <p class="product-desc">2 X-Tudo + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 95,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Casal X-Tudo', 95.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Família X-Burguer" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Família X-Burguer</h3>
+                        <p class="product-desc">4 X-Burguer + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 95,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Família X-Burguer', 95.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Hot Dog Especial (Família)" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Hot Dog Especial (4 Un.)</h3>
+                        <p class="product-desc">4 Hot Dogs Especial + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 95,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Hot Dog Especial (4 Un.)', 95.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Americano" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Americano</h3>
+                        <p class="product-desc">4 Americanos + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 95,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Americano', 95.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Família X-Salada" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Família X-Salada</h3>
+                        <p class="product-desc">4 X-Salada + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 105,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Família X-Salada', 105.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Família X-Bacon" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Família X-Bacon</h3>
+                        <p class="product-desc">4 X-Bacon + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 115,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Família X-Bacon', 115.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Família X-Calabresa" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Família X-Calabresa</h3>
+                        <p class="product-desc">4 X-Calabresa + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 115,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Família X-Calabresa', 115.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Cachorrão" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Cachorrão</h3>
+                        <p class="product-desc">4 X-Cachorrão + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 115,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Cachorrão', 115.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Família X-Egg" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Família X-Egg</h3>
+                        <p class="product-desc">4 X-Egg + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 115,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Família X-Egg', 115.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="combos.jpg" alt="Combo Família X-Tudo" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Família X-Tudo</h3>
+                        <p class="product-desc">4 X-Tudo + Fritas com bacon/cheddar/catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 165,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Família X-Tudo', 165.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="porcoes" class="products-section">
+        <h2 class="section-title">Porções</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="porcoes.jpg" alt="Fritas c/ bacon e cheddar 300g" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Fritas c/ Bacon e Cheddar 300g</h3>
+                        <p class="product-desc">Batata frita crocante (300g) servida com bacon e cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 25,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Fritas c/ Bacon e Cheddar 300g', 25.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="porcoes.jpg" alt="Fritas c/ bacon e cheddar 600g" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Fritas c/ Bacon e Cheddar 600g</h3>
+                        <p class="product-desc">Batata frita crocante (600g) servida com bacon e cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 45,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Fritas c/ Bacon e Cheddar 600g', 45.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="porcoes.jpg" alt="Fritas c/ bacon e cheddar 1.5kg" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Fritas c/ Bacon e Cheddar 1.5kg</h3>
+                        <p class="product-desc">Batata frita crocante em porção generosa (1.5kg) com bacon e cheddar.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 80,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Fritas c/ Bacon e Cheddar 1.5kg', 80.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="acai" class="products-section">
+        <h2 class="section-title">Açaí no Copo ou Tigela</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Açaí 250ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Açaí 250ml</h3>
+                        <p class="product-desc">Monte do seu jeito! Inclui até 1 adicional grátis.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 14,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Açaí 250ml', 14.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Açaí 350ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Açaí 350ml (Mais Vendido)</h3>
+                        <p class="product-desc">Monte do seu jeito! Inclui até 1 adicional grátis.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 20,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Açaí 350ml', 20.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Açaí 550ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Açaí 550ml</h3>
+                        <p class="product-desc">Monte do seu jeito! Inclui até 1 adicional grátis.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 27,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Açaí 550ml', 27.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Açaí 750ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Açaí 750ml (Melhor Custo)</h3>
+                        <p class="product-desc">Monte do seu jeito! Inclui até 1 adicional grátis.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 30,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Açaí 750ml', 30.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Combo Açaí Simples" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Açaí Simples</h3>
+                        <p class="product-desc">Açaí 350ml + 3 adicionais inclusos.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 28,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Açaí Simples', 28.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Combo Açaí Médio" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Açaí Médio</h3>
+                        <p class="product-desc">Açaí 550ml + 4 adicionais inclusos.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 32,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Açaí Médio', 32.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="acai.jpg" alt="Combo Açaí Top" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Combo Açaí Top</h3>
+                        <p class="product-desc">Açaí 750ml + 5 adicionais + 1 adicional premium grátis.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 38,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Combo Açaí Top', 38.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="tapiocas" class="products-section">
+        <h2 class="section-title">Tapiocas</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Só Manteiga" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">1. Só Manteiga</h3>
+                        <p class="product-desc">Tapioca salgada recheada com manteiga.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 14,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Só Manteiga', 14.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Mista" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">2. Mista</h3>
+                        <p class="product-desc">Presunto e mussarela.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 18,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Mista', 18.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Frango c/ Catupiry" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">3. Frango c/ Catupiry</h3>
+                        <p class="product-desc">Frango desfiado com saboroso catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 20,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Frango c/ Catupiry', 20.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Calabresa Acebolada" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">4. Calabresa Acebolada</h3>
+                        <p class="product-desc">Calabresa fatiada com cebola fresca.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 18,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Calabresa Acebolada', 18.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Carne Seca c/ Catupiry" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">5. Carne Seca c/ Catupiry</h3>
+                        <p class="product-desc">Carne seca desfiada acompanhada de catupiry.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 24,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Carne Seca c/ Catupiry', 24.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Banana c/ Canela" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">7. Banana c/ Canela</h3>
+                        <p class="product-desc">Tapioca doce de banana fatiada com canela em pó.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 14,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Banana c/ Canela', 14.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Chocolate" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">8. Chocolate (Brigadeiro)</h3>
+                        <p class="product-desc">Recheada com um delicioso creme de brigadeiro.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 16,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Chocolate', 16.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Romeu e Julieta" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">10. Romeu e Julieta</h3>
+                        <p class="product-desc">Queijo derretido com goiabada tradicional.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 18,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Romeu e Julieta', 18.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Banana c/ Leite Cond." class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">11. Banana c/ Leite Cond.</h3>
+                        <p class="product-desc">Banana fatiada coberta com bastante leite condensado.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 18,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Banana c/ Leite Cond.', 18.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="tapioca.jpg" alt="Tapioca Morango c/ Chocolate" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">12. Morango c/ Chocolate</h3>
+                        <p class="product-desc">Morangos frescos fatiados com calda cremosa de chocolate.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 24,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Tapioca Morango c/ Chocolate', 24.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="bebidas" class="products-section">
+        <h2 class="section-title">Bebidas</h2>
+        <div class="products-container">
+            <div class="products-track">
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Coca-cola Lata" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Coca-cola Lata</h3>
+                        <p class="product-desc">Refrigerante Coca-Cola em lata gelada.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 7,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Coca-cola Lata', 7.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Coca-cola 1 Litro" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Coca-cola 1 Litro</h3>
+                        <p class="product-desc">Garrafa de 1 Litro de Coca-Cola gelada.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 10,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Coca-cola 1 Litro', 10.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Coca-cola 2 Litros" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Coca-cola 2 Litros</h3>
+                        <p class="product-desc">Garrafa de 2 Litros de Coca-Cola gelada.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 15,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Coca-cola 2 Litros', 15.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Guaraná 2 Litros" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Guaraná 2 Litros</h3>
+                        <p class="product-desc">Garrafa de 2 Litros de Guaraná gelado.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 10,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Guaraná 2 Litros', 10.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Suco 300 ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Suco 300 ml</h3>
+                        <p class="product-desc">Suco natural copo de 300ml.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 10,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Suco 300 ml', 10.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Suco 500 ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Suco 500 ml</h3>
+                        <p class="product-desc">Suco natural copo de 500ml.</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 15,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Suco 500 ml', 15.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="bebidas.jpg" alt="Suco natural com morango 500 ml" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Suco Natural c/ Morango 500ml</h3>
+                        <p class="product-desc">Suco natural preparado com morangos frescos (500ml).</p>
+                        <div class="product-footer">
+                            <span class="product-price">R$ 18,00</span>
+                            <button class="order-btn" onclick="addToCart(this, 'Suco Natural c/ Morango 500ml', 18.00)">Peça Já</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/5514996707198" class="whatsapp-float" target="_blank">
+        <img src="whatsapp-icon.png" class="whatsapp-icon-png" alt="WhatsApp">
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
