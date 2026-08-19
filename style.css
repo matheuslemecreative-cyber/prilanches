@@ -554,3 +554,27 @@ html {
 .products-section {
     scroll-margin-top: 150px; /* Ajuste esse valor se seu cabeçalho for maior ou menor */
 }
+
+/* Notificação Flutuante (Toast) */
+.notice-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    border-left: 4px solid #8B0000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 30000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    pointer-events: none;
+}
+
+.notice-toast.show {
+    opacity: 1;
+    visibility: visible;
+}
