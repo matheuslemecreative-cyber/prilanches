@@ -47,8 +47,10 @@ function nextSlide() { showSlide(currentSlide + 1); }
 function prevSlide() { showSlide(currentSlide - 1); }
 function resetTimer() { clearInterval(autoSlideTimer); autoSlideTimer = setInterval(nextSlide, slideInterval); }
 
-carouselContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-carouselContainer.addEventListener('touchend', (e) => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); }, { passive: true });
+if (carouselContainer) {
+    carouselContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    carouselContainer.addEventListener('touchend', (e) => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); }, { passive: true });
+}
 
 function handleSwipe() {
     const swipeThreshold = 50;
@@ -59,6 +61,28 @@ autoSlideTimer = setInterval(nextSlide, slideInterval);
 
 
 // ==========================================================================
+// NOTIFICAÇÃO DE IMAGEM ILUSTRATIVA
+// ==========================================================================
+
+let noticeTimeout;
+function showIllustrativeNotice() {
+    const notice = document.getElementById('notice-toast');
+    if (!notice) return;
+
+    clearTimeout(noticeTimeout);
+    notice.classList.add('show');
+
+    noticeTimeout = setTimeout(() => {
+        notice.classList.remove('show');
+    }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showIllustrativeNotice();
+});
+
+
+// ==========================================================================
 // SISTEMA COMPLETO DO CARRINHO DE COMPRAS
 // ==========================================================================
 
@@ -66,16 +90,17 @@ let cart = [];
 
 // Função para adicionar item ao carrinho e executar a animação de voo
 function addToCart(buttonElement, name, price) {
+    // Aciona o aviso de imagem ilustrativa
+    showIllustrativeNotice();
+
     // 1. Lógica da Animação Fly
     const card = buttonElement.closest('.product-card');
     const imgToFly = card.querySelector('.product-img');
     const cartIcon = document.querySelector('.cart-icon-container');
 
-    // Obtém as posições do produto e do carrinho na tela atual do cliente
     const imgRect = imgToFly.getBoundingClientRect();
     const cartRect = cartIcon.getBoundingClientRect();
 
-    // Cria o elemento fantasma para voar
     const flyer = document.createElement('img');
     flyer.src = imgToFly.src;
     flyer.classList.add('flying-img');
@@ -87,7 +112,6 @@ function addToCart(buttonElement, name, price) {
 
     document.body.appendChild(flyer);
 
-    // Força o navegador a reconhecer a posição inicial antes de iniciar a transição
     requestAnimationFrame(() => {
         flyer.style.top = `${cartRect.top + 5}px`;
         flyer.style.left = `${cartRect.left + 5}px`;
@@ -97,10 +121,8 @@ function addToCart(buttonElement, name, price) {
         flyer.style.opacity = '0.4';
     });
 
-    // Remove do documento assim que terminar a animação CSS (800ms)
     setTimeout(() => {
         flyer.remove();
-        // Efeito sutil de pulso no ícone do carrinho ao receber o item
         cartIcon.style.transform = 'scale(1.2)';
         setTimeout(() => cartIcon.style.transform = 'scale(1)', 200);
     }, 800);
@@ -131,7 +153,6 @@ function updateCartUI() {
         totalItems += item.quantity;
         totalPrice += item.price * item.quantity;
 
-        // Renderiza cada card de item dentro do menu lateral
         const itemElement = document.createElement('div');
         itemElement.classList.add('cart-item');
         itemElement.innerHTML = `
@@ -148,7 +169,6 @@ function updateCartUI() {
         cartItemsContainer.appendChild(itemElement);
     });
 
-    // Atualiza cabeçalho e rodapé do carrinho
     cartCountElement.textContent = totalItems;
     cartTotalElement.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
 }
@@ -191,31 +211,3 @@ function checkoutWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
-
-// Função para exibir a mensagem "Imagem Ilustrativa" por 5 segundos
-let noticeTimeout;
-function showIllustrativeNotice() {
-    const notice = document.getElementById('notice-toast');
-    if (!notice) return;
-
-    // Cancela o tempo limite anterior se um novo clique ocorrer
-    clearTimeout(noticeTimeout);
-
-    notice.classList.add('show');
-
-    noticeTimeout = setTimeout(() => {
-        notice.classList.remove('show');
-    }, 5000); // 5000ms = 5 segundos
-}
-
-// Exibe a mensagem assim que a página é carregada
-document.addEventListener('DOMContentLoaded', () => {
-    showIllustrativeNotice();
-});
-
-function addToCart(buttonElement, name, price) {
-    showIllustrativeNotice(); // <--- Adicione esta linha aqui
-
-    // Mantém todo o resto do seu código original da função addToCart abaixo...
-    const card = buttonElement.closest('.product-card');
-    ...
