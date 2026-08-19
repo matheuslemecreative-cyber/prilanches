@@ -191,3 +191,31 @@ function checkoutWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
+
+// Função para exibir a mensagem "Imagem Ilustrativa" por 5 segundos
+let noticeTimeout;
+function showIllustrativeNotice() {
+    const notice = document.getElementById('notice-toast');
+    if (!notice) return;
+
+    // Cancela o tempo limite anterior se um novo clique ocorrer
+    clearTimeout(noticeTimeout);
+
+    notice.classList.add('show');
+
+    noticeTimeout = setTimeout(() => {
+        notice.classList.remove('show');
+    }, 5000); // 5000ms = 5 segundos
+}
+
+// Exibe a mensagem assim que a página é carregada
+document.addEventListener('DOMContentLoaded', () => {
+    showIllustrativeNotice();
+});
+
+function addToCart(buttonElement, name, price) {
+    showIllustrativeNotice(); // <--- Adicione esta linha aqui
+
+    // Mantém todo o resto do seu código original da função addToCart abaixo...
+    const card = buttonElement.closest('.product-card');
+    ...
